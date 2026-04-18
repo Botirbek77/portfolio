@@ -1,0 +1,238 @@
+// Variables
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$dark-color: #212529;
+$light-color: #f8f9fa;
+$white: #ffffff;
+$shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// Mixins
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  transition: $property $duration $timing;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+// Hero Section
+.hero-section {
+  background: linear-gradient(135deg, $dark-color, #162e47);
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+
+  h1 {
+    animation: slideInDown 0.8s ease-out;
+
+    @media (max-width: 576px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    animation: slideInUp 0.8s ease-out 0.2s both;
+  }
+
+  .btn {
+    animation: fadeIn 0.8s ease-out 0.4s both;
+    @include transition(transform, 0.3s, ease);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// About Section
+#about {
+  .about-image {
+    @include flex-center;
+
+    img {
+      border: 5px solid $primary-color;
+      @include transition(transform, 0.3s);
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  p {
+    line-height: 1.8;
+    color: $secondary-color;
+  }
+}
+
+// Skills Section
+#skills {
+  .skill-card {
+    @include transition(transform, 0.3s, ease);
+    border: none;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    i {
+      @include transition(transform, 0.3s);
+    }
+
+    &:hover i {
+      transform: scale(1.2);
+    }
+  }
+}
+
+// Projects Section
+#projects {
+  .project-card {
+    border: none;
+    @include transition(all, 0.3s);
+
+    img {
+      @include transition(transform, 0.3s);
+      height: 200px;
+      object-fit: cover;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .btn-outline-primary {
+      @include transition(all, 0.3s);
+
+      &:hover {
+        transform: translateX(2px);
+      }
+    }
+  }
+}
+
+// Contact Section
+#contact {
+  .contact-form {
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: $white;
+
+      &:focus {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-color: $primary-color;
+        color: $white;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+
+  a {
+    @include transition(all, 0.3s);
+    color: $white;
+
+    &:hover {
+      color: $primary-color;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+// Navbar Customization
+.navbar {
+  @include transition(all, 0.3s);
+  box-shadow: $shadow;
+
+  &.scrolled {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-link {
+    @include transition(color, 0.3s);
+
+    &:hover {
+      color: $primary-color !important;
+    }
+
+    &.active {
+      color: $primary-color !important;
+      border-bottom: 2px solid $primary-color;
+    }
+  }
+}
+
+// Animations
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 400px;
+  }
+
+  #about {
+    .about-image {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .project-card {
+    margin-bottom: 1rem;
+  }
+}

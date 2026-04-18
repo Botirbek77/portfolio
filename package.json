@@ -1,0 +1,23 @@
+{
+  "name": "web-portfolio",
+  "version": "1.0.0",
+  "description": "Personal web portfolio with Bootstrap and Sass",
+  "main": "app.js",
+  "scripts": {
+    "sass": "sass --watch style:dist/css",
+    "dev": "npm run sass"
+  },
+  "keywords": [
+    "portfolio",
+    "bootstrap",
+    "sass"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.69.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
+}
